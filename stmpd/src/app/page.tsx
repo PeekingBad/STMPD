@@ -17,7 +17,7 @@ export default function Home() {
             id="name"
             className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50"
           >
-            To get started, edit the page.tsx file. hello world
+            To get started, edit the page.tsx file.
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Looking for a starting point or more instructions? Head over to{" "}
