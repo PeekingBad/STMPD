@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_layout_top_navs",
+  "info": {
+    "displayName": "Top Nav"
+  },
+  "options": {},
+  "attributes": {
+    "logoLink": {
+      "type": "component",
+      "component": "elements.logo-link",
+      "repeatable": false
+    },
+    "link": {
+      "type": "component",
+      "component": "elements.link",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
