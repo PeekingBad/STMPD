@@ -12,7 +12,7 @@ interface ArticlePageParams {
 
 export default async function ArticlePage({ params }: ArticlePageParams) {
   const { slug } = params;
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   try {
     const { data } = await getArticleBySlug(slug, isEnabled ? "preview" : undefined);
