@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { getArticleBySlug } from "@/lib/api";
 import { Article } from "@/lib/types";
-import { draftMode } from "next/headers";
 
 interface ArticlePageParams {
   params: {
@@ -12,10 +11,9 @@ interface ArticlePageParams {
 
 export default async function ArticlePage({ params }: ArticlePageParams) {
   const { slug } = params;
-  const { isEnabled } = await draftMode();
 
   try {
-    const { data } = await getArticleBySlug(slug, isEnabled ? "preview" : undefined);
+    const { data } = await getArticleBySlug(slug);
     const article: Article = data[0];
 
     if (!article) {
