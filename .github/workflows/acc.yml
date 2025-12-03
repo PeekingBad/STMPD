@@ -8,14 +8,9 @@ name: "Gate 2: Acceptance - Build & Preview Deploy"
 on:
   push:
     branches: [acc]
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/**'
   pull_request:
     branches: [acc]
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/**'
+
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
