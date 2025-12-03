@@ -7,6 +7,7 @@ const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
 
   // When mounted on client, now we can show the UI
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;

@@ -1,16 +1,29 @@
-# .github/workflows/gate-1-dev.yml
+# Gate 1: Dev Branch - Lint & TypeScript Check
+# Triggered bij pushes en PRs naar dev branch
+# Checkt alleen de frontend folder
+
 name: "Gate 1: Dev - Lint & TypeScript Check"
 
 on:
   push:
     branches: [dev]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [dev]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/**'
 
 jobs:
   lint-and-typecheck:
     name: "🔍 Lint + TypeScript Check"
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./frontend
     
     steps:
       - name: Checkout code
@@ -21,15 +34,16 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
       
       - name: Install dependencies
         run: npm ci
       
       - name: Run ESLint
-        run: npm run lint
+        run: npx eslint .
       
       - name: Run TypeScript check
         run: npx tsc --noEmit
       
       - name: ✅ Gate 1 Passed
-        run: echo "Gate 1 passed! Ready for merge to acc branch."
+        run: echo "Gate 1 passed! Code quality checks completed. Ready for merge to acc branch."
