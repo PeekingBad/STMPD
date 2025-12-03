@@ -2,7 +2,7 @@
 # Triggered bij pushes en PRs naar acc branch
 # Checkt alleen de frontend folder
 
-name: "Gate 2 & 3: Acceptance - Build & CMS Check"
+name: "Gate 2: Acceptance - Build & CMS Check"
 
 on:
   push:
@@ -16,9 +16,9 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
-  # Gate 2: Build + CI Pipeline
+  # Build & CI Pipeline
   build:
-    name: "🏗️ Gate 2: Build & CI Pipeline"
+    name: "🏗️ Build & CI Pipeline"
     runs-on: ubuntu-latest
     
     defaults:

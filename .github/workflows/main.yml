@@ -2,7 +2,7 @@
 # Triggered bij pushes en PRs naar main branch
 # Checkt alleen de frontend folder
 
-name: "Gate 4: Production - Final Release"
+name: "Gate 3: Production - Final Release"
 
 on:
   push:
