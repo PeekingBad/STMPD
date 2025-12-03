@@ -1,5 +1,7 @@
 # STMPD Project with Next.js and Strapi
 
+## testing pipeline 7
+
 This project is a web application for STMPD, built with a Next.js frontend and a Strapi backend. It serves as a starter template for creating a decoupled website where content is managed in Strapi and displayed in a Next.js application.
 
 ## Getting Started

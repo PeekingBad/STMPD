@@ -1,9 +1,9 @@
-# Gate 2: Acceptance Branch - Lint, TypeScript & Preview Deploy
+# Gate 2: Acceptance Branch - Lint & TypeScript Check
 # Triggered bij pushes en PRs naar acc branch
 # Checkt alleen de frontend folder
-# Strapi health check gebeurt automatisch tijdens Vercel build
+# Deployment wordt automatisch door Vercel gedaan
 
-name: "Gate 2: Acceptance - Build & Preview Deploy"
+name: "Gate 2: Acceptance - Lint & TypeScript Check"
 
 on:
   push:
@@ -17,13 +17,8 @@ on:
       - 'frontend/**'
       - '.github/workflows/**'
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 jobs:
-  # Gate 2: Lint & TypeScript Check
-  build:
+  lint-and-typecheck:
     name: "🏗️ Gate 2: Lint & TypeScript Check"
     runs-on: ubuntu-latest
     
@@ -52,38 +47,4 @@ jobs:
         run: npx tsc --noEmit
       
       - name: ✅ Gate 2 Passed
-        run: echo "All checks passed! Ready for Vercel preview deployment."
-
-  # Deploy naar Vercel Preview (Vercel doet zelf de build)
-  deploy-preview:
-    name: "🚀 Deploy to Vercel Preview"
-    runs-on: ubuntu-latest
-    needs: [build]
-    if: github.event_name == 'push'
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      
-      - name: Install Vercel CLI
-        run: npm install -g vercel@latest
-      
-      - name: Pull Vercel Environment
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-      
-      - name: Deploy to Vercel Preview
-        id: deploy
-        run: |
-          URL=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})
-          echo "preview_url=$URL" >> $GITHUB_OUTPUT
-          echo "🔗 Preview URL: $URL"
-      
-      - name: ✅ Preview Deployment Complete
-        run: |
-          echo "Preview deployment started!"
-          echo "URL: ${{ steps.deploy.outputs.preview_url }}"
+        run: echo "All checks passed! Vercel will handle the preview deployment."
