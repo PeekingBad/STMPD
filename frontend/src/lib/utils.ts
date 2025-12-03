@@ -1,8 +1,12 @@
 export function flattenAttributes(data: any): any {
+  // Return null/undefined as is
+  if (data === null || data === undefined) {
+    return data;
+  }
+
   // Check if data is a plain object; return as is if not
   if (
     typeof data !== "object" ||
-    data === null ||
     data instanceof Date ||
     typeof data === "function"
   ) {
@@ -39,7 +43,12 @@ export function flattenAttributes(data: any): any {
 }
 
 export function getStrapiURL() {
-  return process.env.STRAPI_BASE_URL ?? "http://localhost:1337";
+  // First check for the public URL (for client-side), then server URL, then fallback
+  return (
+    process.env.NEXT_PUBLIC_STRAPI_URL ||
+    process.env.STRAPI_BASE_URL ||
+    "http://localhost:1337"
+  );
 }
 
 export function getStrapiMedia(url: string | null) {
