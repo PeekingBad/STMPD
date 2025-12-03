@@ -3,7 +3,7 @@
 # Checkt alleen de frontend folder
 # Strapi check gebeurt automatisch tijdens Vercel build
 
-name: "Gate 4: Production - Final Release"
+name: "Gate 3: Production - Final Release"
 
 on:
   push:
