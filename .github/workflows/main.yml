@@ -13,7 +13,7 @@ on:
 
 jobs:
   final-checks:
-    name: "🔒 Final Quality Checks"
+    name: "Final Quality Checks"
     runs-on: ubuntu-latest
     
     defaults:
