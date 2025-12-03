@@ -1,8 +1,9 @@
-# Gate 2 & 3: Acceptance Branch - Build, CMS Check & Preview Deploy
+# Gate 2: Acceptance Branch - Lint, TypeScript & Preview Deploy
 # Triggered bij pushes en PRs naar acc branch
 # Checkt alleen de frontend folder
+# Strapi health check gebeurt automatisch tijdens Vercel build
 
-name: "Gate 2: Acceptance - Build & CMS Check"
+name: "Gate 2: Acceptance - Build & Preview Deploy"
 
 on:
   push:
@@ -16,9 +17,9 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
-  # Build & CI Pipeline
+  # Gate 2: Lint & TypeScript Check
   build:
-    name: "🏗️ Build & CI Pipeline"
+    name: "🏗️ Gate 2: Lint & TypeScript Check"
     runs-on: ubuntu-latest
     
     defaults:
@@ -45,52 +46,15 @@ jobs:
       - name: Run TypeScript check
         run: npx tsc --noEmit
       
-      - name: Build application (SSR/SSG test)
-        run: npm run build
-        env:
-          NEXT_PUBLIC_STRAPI_URL: ${{ secrets.STRAPI_URL }}
-          # Voeg hier andere environment variables toe die je nodig hebt
-          # NEXT_PUBLIC_API_KEY: ${{ secrets.API_KEY }}
-      
       - name: ✅ Gate 2 Passed
-        run: echo "Build successful! Application compiles without errors."
+        run: echo "All checks passed! Ready for Vercel preview deployment."
 
-  # Gate 3: CMS Connection + API Health Check
-  cms-health-check:
-    name: "🔌 Gate 3: Strapi CMS Health Check"
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-      - name: Check Strapi API Health
-        run: |
-          echo "Checking Strapi CMS connection..."
-          
-          # Health check op je Strapi instance
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.STRAPI_URL }}" --max-time 30 || echo "000")
-          
-          echo "Response code: $RESPONSE"
-          
-          if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 400 ]; then
-            echo "✅ Strapi CMS is bereikbaar (HTTP $RESPONSE)"
-          else
-            echo "❌ Strapi CMS niet bereikbaar (HTTP $RESPONSE)"
-            echo "Check of STRAPI_URL secret correct is ingesteld"
-            exit 1
-          fi
-      
-      - name: ✅ Gate 3 Passed
-        run: echo "CMS health check passed! Strapi is online and responding."
-
-  # Deploy naar Vercel Preview
+  # Deploy naar Vercel Preview (Vercel doet zelf de build)
   deploy-preview:
     name: "🚀 Deploy to Vercel Preview"
     runs-on: ubuntu-latest
-    needs: [build, cms-health-check]
-    
-    defaults:
-      run:
-        working-directory: ./frontend
+    needs: [build]
+    if: github.event_name == 'push'
     
     steps:
       - name: Checkout code
@@ -100,8 +64,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
       
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
@@ -109,29 +71,14 @@ jobs:
       - name: Pull Vercel Environment
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       
-      - name: Build Project
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          NEXT_PUBLIC_STRAPI_URL: ${{ secrets.STRAPI_URL }}
-      
       - name: Deploy to Vercel Preview
         id: deploy
         run: |
-          URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          URL=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})
           echo "preview_url=$URL" >> $GITHUB_OUTPUT
           echo "🔗 Preview URL: $URL"
       
-      - name: Comment Preview URL on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '🚀 **Preview Deployment Ready!**\n\n🔗 Preview URL: ${{ steps.deploy.outputs.preview_url }}\n\n✅ All Gate 2 & 3 checks passed!'
-            })
-      
       - name: ✅ Preview Deployment Complete
-        run: echo "Preview deployment successful! URL - ${{ steps.deploy.outputs.preview_url }}"
+        run: |
+          echo "Preview deployment started!"
+          echo "URL: ${{ steps.deploy.outputs.preview_url }}"
