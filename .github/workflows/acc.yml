@@ -1,21 +1,35 @@
-# .github/workflows/gate-2-acc.yml
-name: "Gate 2 & 3: Acceptance - Build & CMS Check"
+# Gate 2: Acceptance Branch - Lint, TypeScript & Preview Deploy
+# Triggered bij pushes en PRs naar acc branch
+# Checkt alleen de frontend folder
+# Strapi health check gebeurt automatisch tijdens Vercel build
+
+name: "Gate 2: Acceptance - Build & Preview Deploy"
 
 on:
   push:
     branches: [acc]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [acc]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/**'
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
-  # Gate 2: Build + CI Pipeline
+  # Gate 2: Lint & TypeScript Check
   build:
-    name: "🏗️ Gate 2: Build & CI Pipeline"
+    name: "🏗️ Gate 2: Lint & TypeScript Check"
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./frontend
     
     steps:
       - name: Checkout code
@@ -26,59 +40,26 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
       
       - name: Install dependencies
         run: npm ci
       
       - name: Run ESLint
-        run: npm run lint
+        run: npx eslint .
       
       - name: Run TypeScript check
         run: npx tsc --noEmit
       
-      - name: Build application (SSR/SSG test)
-        run: npm run build
-        env:
-          # Voeg hier je Strapi URL toe voor build-time
-          NEXT_PUBLIC_STRAPI_URL: ${{ secrets.STRAPI_URL }}
-      
       - name: ✅ Gate 2 Passed
-        run: echo "Build successful!"
+        run: echo "All checks passed! Ready for Vercel preview deployment."
 
-  # Gate 3: CMS Connection + API Health Check
-  cms-health-check:
-    name: "🔌 Gate 3: Strapi CMS Health Check"
-    runs-on: ubuntu-latest
-    needs: build  # Alleen als build slaagt
-    
-    steps:
-      - name: Check Strapi API Health
-        run: |
-          echo "Checking Strapi CMS connection..."
-          
-          # Health check op je Strapi instance
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.STRAPI_URL }}/api/health || echo "000")
-          
-          if [ "$RESPONSE" = "000" ]; then
-            # Probeer alternatieve endpoint als /health niet bestaat
-            RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.STRAPI_URL }})
-          fi
-          
-          if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 400 ]; then
-            echo "✅ Strapi CMS is bereikbaar (HTTP $RESPONSE)"
-          else
-            echo "❌ Strapi CMS niet bereikbaar (HTTP $RESPONSE)"
-            exit 1
-          fi
-      
-      - name: ✅ Gate 3 Passed
-        run: echo "CMS health check passed!"
-
-  # Deploy naar Vercel Preview
+  # Deploy naar Vercel Preview (Vercel doet zelf de build)
   deploy-preview:
     name: "🚀 Deploy to Vercel Preview"
     runs-on: ubuntu-latest
-    needs: [build, cms-health-check]
+    needs: [build]
+    if: github.event_name == 'push'
     
     steps:
       - name: Checkout code
@@ -88,7 +69,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
       
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
@@ -96,24 +76,14 @@ jobs:
       - name: Pull Vercel Environment
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       
-      - name: Build Project
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-      
       - name: Deploy to Vercel Preview
         id: deploy
         run: |
-          URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          URL=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})
           echo "preview_url=$URL" >> $GITHUB_OUTPUT
           echo "🔗 Preview URL: $URL"
       
-      - name: Comment Preview URL on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '🚀 **Preview Deployment Ready!**\n\n🔗 ${{ steps.deploy.outputs.preview_url }}'
-            })
+      - name: ✅ Preview Deployment Complete
+        run: |
+          echo "Preview deployment started!"
+          echo "URL: ${{ steps.deploy.outputs.preview_url }}"
