@@ -8,14 +8,10 @@ name: "Gate 4: Production - Final Release"
 on:
   push:
     branches: [main]
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/**'
+
   pull_request:
     branches: [main]
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/**'
+
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
