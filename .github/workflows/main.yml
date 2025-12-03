@@ -1,24 +1,17 @@
-# Gate 4: Production Branch - Final Release
+# Gate 4: Production Branch - Final Quality Checks
 # Triggered bij pushes en PRs naar main branch
 # Checkt alleen de frontend folder
-# Strapi check gebeurt automatisch tijdens Vercel build
+# Deployment wordt automatisch door Vercel gedaan
 
-name: "Gate 3: Production - Final Release"
+name: "Gate 4: Production - Final Quality Checks"
 
 on:
   push:
     branches: [main]
-
   pull_request:
     branches: [main]
 
-
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 jobs:
-  # Final checks voor productie
   final-checks:
     name: "🔒 Final Quality Checks"
     runs-on: ubuntu-latest
@@ -47,42 +40,5 @@ jobs:
       - name: Run TypeScript check
         run: npx tsc --noEmit
       
-      - name: ✅ All Checks Passed
-        run: echo "All quality checks passed! Ready for production deployment."
-
-  # Deploy naar Vercel Production (Vercel doet zelf de build)
-  deploy-production:
-    name: "🚀 Gate 4: Deploy to Production"
-    runs-on: ubuntu-latest
-    needs: [final-checks]
-    if: github.event_name == 'push'
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      
-      - name: Install Vercel CLI
-        run: npm install -g vercel@latest
-      
-      - name: Pull Vercel Environment
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      
-      - name: Deploy to Vercel Production
-        id: deploy
-        run: |
-          URL=$(vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }})
-          echo "production_url=$URL" >> $GITHUB_OUTPUT
-          echo "🎉 Production URL: $URL"
-      
-      - name: 🎉 Production Release Complete
-        run: |
-          echo "=========================================="
-          echo "🎉 PRODUCTION DEPLOYMENT SUCCESSFUL!"
-          echo "=========================================="
-          echo "URL: ${{ steps.deploy.outputs.production_url }}"
-          echo "=========================================="
+      - name: ✅ Final Quality Checks Passed
+        run: echo "All quality checks passed! Vercel will handle the production deployment."
