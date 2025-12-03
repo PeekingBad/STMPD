@@ -45,7 +45,7 @@ jobs:
         run: npm ci
       
       - name: Run ESLint
-        run: npm run lint
+        run: npx eslint .
       
       - name: Run TypeScript check
         run: npx tsc --noEmit
