@@ -6,7 +6,7 @@ export default function DynamicPageRoute() {
   return (
     <Container>
       <div>Blog Static Route
-        <p>Hello world</p>
+        <p>Hello test</p>
       </div>
     </Container>
   );
