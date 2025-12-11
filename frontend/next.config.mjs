@@ -7,8 +7,8 @@ const nextConfig = {
         hostname: "placehold.co",
       },
       {
-        protocol: "https",
-        hostname: "strapi.cytric.nl",
+        protocol: "http",
+        hostname: "84.26.27.68",
       },
     ],
   },
