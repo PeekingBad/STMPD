@@ -1,9 +1,8 @@
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
-import qs from "qs";
 import { DisclosureClient } from "@/components/DisclosureClient";
 import { getStrapiURL } from "@/lib/utils";
-
+import qs from "qs";
 async function loader() {
 
 const { fetchData } = await import('@/lib/fetch');
