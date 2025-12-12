@@ -34,7 +34,7 @@ const query = qs.stringify({
   });
 
 const url = new URL(path, baseUrl);
-  url.search = query;
+  url.search = "?" + query;
 
 const data = await fetchData(url.href);
 return data;
