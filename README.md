@@ -1,6 +1,6 @@
 # Next.js & Strapi Starter for a Headless CMS
 
-This project is a frontend application built with Next.js, React, Tailwind CSS, and TypeScript, designed to work with a Strapi backend as a headless CMS
+This project is a frontend application built with Next.js, React, Tailwind CSS, and TypeScript, designed to work with a Strapi backend as a headless CMS.
 
 ## Project Overview
 
