@@ -8,7 +8,6 @@ import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
 
-
 export default function Home() {
   return (
     <Container>
