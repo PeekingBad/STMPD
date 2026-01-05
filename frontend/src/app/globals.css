@@ -1,10 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Maharlika Regular';
+  src: url('/fonts/Maharlika-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
+  :root {
+    --color-primary: #232323;
+    --color-secondary: #000000;
+    --color-tertiary: #000000;
+    --color-background: #000000;
+    --color-text: #ffffff;
+  }
+}
+
   html,
   body {
     @apply dark:bg-trueGray-900;
+
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Maharlika Regular', sans-serif;
   }
 }
