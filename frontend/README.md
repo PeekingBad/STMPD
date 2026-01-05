@@ -9,7 +9,6 @@ This is a starter template for building a website with a decoupled frontend and 
 ### Key Features:
 
 - **Frontend (This Repository):**
-
   - Built with [Next.js](https://nextjs.org/): A React framework for production.
   - Styled with [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework.
   - Written in [TypeScript](https://www.typescriptlang.org/): For static type checking.

@@ -1,21 +1,16 @@
 import { flattenAttributes } from "@/lib/utils";
 
-const isBuildTime =
-  process.env.NODE_ENV === "production" && typeof window === "undefined";
+export async function fetchData(url: string) {
+  const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
 
-export async function fetchData(
-  url: string,
-  authToken?: string,
-  revalidate: number = 10 // default to 10 seconds
-) {
-  const options: RequestInit & { next?: { revalidate?: number } } = {
+  const options: RequestInit = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      ...(authToken && { Authorization: `Bearer ${authToken}` }),
+      Authorization: `Bearer ${STRAPI_TOKEN}`, 
     },
-    cache: "force-cache",       // <— ALLOW ISR
-    next: { revalidate },       // <— REVALIDATE EVERY 10 SECONDS
+
+    next: { revalidate: 10 }, 
   };
 
   try {
@@ -29,16 +24,7 @@ export async function fetchData(
     const data = await response.json();
     return flattenAttributes(data);
   } catch (error) {
-    console.warn(
-      `⚠️ Could not fetch from ${url}:`,
-      error instanceof Error ? error.message : error
-    );
-
-    if (isBuildTime) {
-      console.warn(`📦 Build mode: returning null for ${url}`);
-      return null;
-    }
-
+    console.error(`Error fetching data from ${url}:`, error);
     return null;
   }
 }
