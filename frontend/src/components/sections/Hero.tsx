@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Container } from "../Container";
+import Icon from "../ui/icon.component";
 
 const Hero = () => {
   return (
@@ -22,7 +23,9 @@ const Hero = () => {
             post-production.
           </p>
 
-          <p className="text-center">↓</p>
+          <div className="flex justify-center ">
+            <Icon icon="arrow-down" />  
+          </div>
 
           <p className="flex flex-col text-right uppercase leading-tight max-w-[340px] font-maharlika">
           <span>Amsterdam&apos;s</span>
