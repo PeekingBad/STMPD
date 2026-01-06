@@ -2,7 +2,6 @@ import { Container } from "@/components/Container";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Benefits } from "@/components/Benefits";
-import { ContentWithImage } from "@/components/ContentWithImage";
 import { Video } from "@/components/Video";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
@@ -14,7 +13,6 @@ export default function Home() {
       <Hero data={heroData} />
       <SectionHeading data={sectionHeading} />
       <Benefits data={benefitsData} />
-      <ContentWithImage data={contentWithImage} />
       <SectionHeading data={sectionHeading} />
       <Video data={videoData} />
       <SectionHeading data={sectionHeading} />

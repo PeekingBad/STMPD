@@ -4,13 +4,15 @@ import "./globals.css";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PopupWidget } from "@/components/PopupWidget";
 import SmoothScroll from "@/components/SmoothScroll";
 
 import { getStrapiURL } from "@/lib/utils";
 import qs from "qs";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 async function loader() {
   const { fetchData } = await import("@/lib/fetch");
@@ -40,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await loader();
   const meta = data?.Metadata;
 
-  const siteUrl = new URL("https://smtpd-six.vercel.app"); 
+  const siteUrl = new URL("https://smtpd-six.vercel.app");
 
   if (!meta) {
     return {
@@ -69,7 +71,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-
 export default function RootLayout({
   children,
 }: {
@@ -82,7 +83,6 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <PopupWidget />
       </body>
     </html>
   );
