@@ -6,10 +6,10 @@ import { Container } from "./Container";
 const Hero = () => {
   return (
     <section>
-      <video className="absolute object-cover h-screen w-full" src="/video/testvideo.mp4" autoPlay muted={true} playsInline></video>
+      <video className="absolute object-cover h-screen w-full" src="/video/hero-video.mp4" autoPlay loop muted={true} playsInline poster="/img/hero_thumbnail.jpg"></video>
     <Container className="h-screen flex flex-col justify-center relative">
       <div className="flex flex-1 items-center justify-center">
-        <h1 className="text-white text-[120px] uppercase text-center max-w-[9.5ch] leading-[128px]">
+        <h1 className="text-white text-[110px] uppercase text-center max-w-[9.5ch] leading-[128px]">
           your creative partner in sound & story.
         </h1>
       </div>
