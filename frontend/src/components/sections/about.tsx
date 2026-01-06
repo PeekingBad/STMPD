@@ -7,7 +7,7 @@ const About = () => {
     <Container>
       <div className="grid grid-cols-2 ">
         <div>
-            <Image></Image>
+            <Image src="/img/Experience.jpg" alt="" width={625} height={712}></Image>
         </div>
         <div>Col 2</div>
       </div>
