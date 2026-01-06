@@ -81,7 +81,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <SmoothScroll />
         <Navbar />
-        <main>{children}</main>
+        <main className="bg-background">{children}</main>
         <Footer />
       </body>
     </html>
