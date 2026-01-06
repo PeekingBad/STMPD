@@ -1,15 +1,15 @@
 'use client;'
 
 import React from "react";
-import { Container } from "./Container";
+import { Container } from "../Container";
 
 const Hero = () => {
   return (
     <section>
-      <video className="absolute object-cover h-screen w-full" src="/video/hero-video.mp4" autoPlay loop muted={true} playsInline poster="/img/hero_thumbnail.jpg"></video>
+      <video className="absolute object-cover h-screen w-full" src="/video/hero_video.mp4" autoPlay loop muted={true} playsInline poster="/img/hero_thumbnail.jpg"></video>
     <Container className="h-screen flex flex-col justify-center relative">
       <div className="flex flex-1 items-center justify-center">
-        <h1 className="text-white text-[110px] uppercase text-center max-w-[9.5ch] leading-[128px]">
+        <h1 className="text-white text-[120px] uppercase text-center max-w-[9.5ch] leading-[128px] -tracking-[2] drop-shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
           your creative partner in sound & story.
         </h1>
       </div>
@@ -25,7 +25,7 @@ const Hero = () => {
           <p className="text-center">↓</p>
 
           <p className="flex flex-col text-right uppercase leading-tight max-w-[340px] font-maharlika">
-          <span>Amsterdam’s</span>
+          <span>Amsterdam&apos;s</span>
           <span>Largest</span>
           <span>Recording</span>
           <span>Studio</span>
