@@ -23,7 +23,7 @@ const Hero = () => {
             post-production.
           </p>
 
-          <div className="flex justify-center ">
+          <div className="flex justify-center h-full items-end">
             <Icon icon="arrow-down" />  
           </div>
 
