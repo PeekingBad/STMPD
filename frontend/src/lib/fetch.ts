@@ -7,10 +7,10 @@ export async function fetchData(url: string) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${STRAPI_TOKEN}`, 
+      Authorization: `Bearer ${STRAPI_TOKEN}`,
     },
 
-    next: { revalidate: 10 }, 
+    next: { revalidate: 10 },
   };
 
   try {

@@ -1,8 +1,7 @@
 import { Container } from "@/components/Container";
-import { Hero } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Benefits } from "@/components/Benefits";
-import { ContentWithImage } from "@/components/ContentWithImage";
 import { Video } from "@/components/Video";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
@@ -10,40 +9,22 @@ import { Cta } from "@/components/Cta";
 
 export default function Home() {
   return (
-    <Container>
-      <Hero data={heroData} />
-      <SectionHeading data={sectionHeading} />
-      <Benefits data={benefitsData} />
-      <ContentWithImage data={contentWithImage} />
-      <SectionHeading data={sectionHeading} />
-      <Video data={videoData} />
-      <SectionHeading data={sectionHeading} />
-      <Testimonials data={testimonialsData} />
+    <>
+    <Hero />
+    <SectionHeading data={sectionHeading} />
+    <Benefits data={benefitsData} />
+    <SectionHeading data={sectionHeading} />
+    <Video data={videoData} />
+    <SectionHeading data={sectionHeading} />
+    <Testimonials data={testimonialsData} />
       <SectionHeading data={sectionHeading} />
       <Faq data={faqsData} />
       <Cta data={ctaData} />
-    </Container>
+    </>
   );
 }
 
-const heroData = {
-  id: 1,
-  __component: "layout.hero",
-  heading: "Free Landing Page Template for startups",
-  text: "stmpd is a free landing page & marketing website template for startups and indie projects. Its built with Next.js & TailwindCSS. And its completely open-source.",
-  cta: {
-    id: 7,
-    href: "https://github.com/PaulBratslavsky/next-strapi-template-starter-code",
-    text: "Starter Code",
-    external: true,
-  },
-  image: {
-    id: 2,
-    url: "/img/hero.png",
-    alternativeText: "hero image",
-    name: "hero.png",
-  },
-};
+
 
 const sectionHeading = {
   id: 1,
