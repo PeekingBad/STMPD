@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import Link from "next/link";
 import { StrapiImage } from "./StrapiImage";
 import { gsap } from "gsap";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { Container } from "./Container";
+
 
 interface LinkProps {
   id: number;
@@ -39,12 +43,30 @@ interface HeaderProps {
 export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
   const [open, setOpen] = useState(false);
   const [barsCount, setBarsCount] = useState(18);
+  const [currentLocale, setCurrentLocale] = useState("nl");
 
   const menuRef = useRef<HTMLDivElement>(null);
   const barsRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const savedLocale = Cookies.get("NEXT_LOCALE");
+    if (savedLocale && savedLocale !== currentLocale) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setCurrentLocale(savedLocale);
+    }
+  }, [currentLocale]);
+
+  function handleLocaleChange() {
+    const newLocale = currentLocale === "en" ? "nl" : "en";
+    setCurrentLocale(newLocale);
+    Cookies.set("NEXT_LOCALE", newLocale, { expires: 365 });
+    router.refresh();
+  }
 
   const socials: SocialProps[] = [
     {
@@ -65,7 +87,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
       icon: <FaInstagram />,
       name: "Instagram",
     },
-     {
+    {
       id: 4,
       href: "https://instagram.com",
       icon: <FaInstagram />,
@@ -94,7 +116,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
     const bars = gsap.utils.toArray<HTMLElement>(barsRef.current.children);
     const linksEls = gsap.utils.toArray<HTMLElement>(linksRef.current.children);
     const socialsEls = gsap.utils.toArray<HTMLElement>(
-      socialsRef.current.children,
+      socialsRef.current.children
     );
 
     gsap.set(menuRef.current, {
@@ -136,7 +158,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           },
           ease: "power3.inOut",
         },
-        "-=0.5",
+        "-=0.5"
       )
       .to(
         linksEls,
@@ -147,7 +169,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.7",
+        "-=0.7"
       )
       .to(
         socialsEls,
@@ -158,7 +180,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.7",
+        "-=0.7"
       );
 
     return () => {
@@ -188,7 +210,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
 
   return (
     <header className="absolute top-0 left-0 w-full">
-      <div className="container mx-auto flex items-center justify-between p-8 xl:px-0 relative z-[60]">
+      <Container className="mx-auto flex items-center justify-between p-8 xl:px-0 relative z-[60]">
         <Link
           href={logoLink.href || "/"}
           className="block"
@@ -202,30 +224,40 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
             className="w-7 h-8"
           />
         </Link>
-
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="w-8 h-8 sm:w-7 sm:h-7 relative flex items-center justify-center"
-          aria-label="Toggle menu"
-        >
-          <div className="w-6 h-6 sm:w-5 sm:h-5 relative">
-            <span
-              className={`absolute w-full h-[2px] transition-all duration-300 ${
-                open
-                  ? "bg-white rotate-45 top-1/2 -translate-y-1/2"
-                  : "bg-white top-[35%]"
-              }`}
-            />
-            <span
-              className={`absolute w-full h-[2px] transition-all duration-300 ${
-                open
-                  ? "bg-white -rotate-45 top-1/2 -translate-y-1/2"
-                  : "bg-white top-[65%]"
-              }`}
-            />
-          </div>
-        </button>
-      </div>
+        <div className="flex items-center">
+          <button
+            onClick={handleLocaleChange}
+            className={`w-8 h-8 sm:w-7 sm:h-7 relative items-center justify-center text-white ${
+              open ? "flex" : "hidden"
+            } md:flex`}
+            aria-label="Toggle language"
+          >
+            {currentLocale === "nl" ? "NL" : "EN"}
+          </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="w-8 h-8 sm:w-7 sm:h-7 relative flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-6 sm:w-5 sm:h-5 relative">
+              <span
+                className={`absolute w-full h-[2px] transition-all duration-300 ${
+                  open
+                    ? "bg-white rotate-45 top-1/2 -translate-y-1/2"
+                    : "bg-white top-[35%]"
+                }`}
+              />
+              <span
+                className={`absolute w-full h-[2px] transition-all duration-300 ${
+                  open
+                    ? "bg-white -rotate-45 top-1/2 -translate-y-1/2"
+                    : "bg-white top-[65%]"
+                }`}
+              />
+            </div>
+          </button>
+        </div>
+      </Container>
 
       <div
         ref={menuRef}
@@ -237,7 +269,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           ))}
         </div>
 
-        <div className="relative z-10 h-full flex flex-col md:flex-row md:items-start text-[85px] w-full leading-[128px] px-8 pt-40 md:pt-56 md:px-11 md:justify-between font-maharlika md:gap-x-20">
+        <Container className="relative px-8 z-10 h-full flex flex-col md:flex-row md:items-start text-[85px] w-full leading-[128px] pt-40 md:pt-56 md:justify-between font-maharlika md:gap-x-20">
           <div
             ref={linksRef}
             className="flex flex-col space-y-2 md:space-y-8 w-full h-full md:w-auto md:ml-0"
@@ -284,7 +316,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
               </Link>
             ))}
           </div>
-        </div>
+        </Container>
       </div>
     </header>
   );
