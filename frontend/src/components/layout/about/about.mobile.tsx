@@ -6,41 +6,37 @@ import Icon from "../../ui/icon.component";
 
 const AboutMobile = () => {
   return (
-    <section className="">
-      <Container className="">
-        <div className="grid grid-cols-2">
-          <div className="relative w-[80%]">
-            <Image
-              src="/img/Experience.jpg"
-              alt=""
-              width={625}
-              height={712}
-              className="object-cover"
-            />
-            <div className="absolute flex left-[5rem] bottom-6 w-full">
-              <h3 className=" text-[6.25rem] leading-[6.25rem]">
-                THE STMPD <br />
-                <span className="relative left-[9.375rem]">EXPERIENCE</span>
-              </h3>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 mt-[13.5rem]">
-            <div className="flex flex-col gap-5">
-            <h2 className="font-sans text-2 opacity-30">ABOUT & APPROACH</h2>
-            <p className="text-2xl">
-              STMPD recording studios is Amsterdam&apos;s largest recording
-              studio facility. Designed as the ultimate playground for music and
-              audio post-production.
+    <section>
+      <Container className="h-screen">
+        <div className="relative w-full h-full">
+          <Image
+            src="/img/Experience.jpg"
+            alt=""
+            fill
+            className="object-cover h-full w-full z-0"
+          />
+          <div className="absolute inset-0 z-10 bg-[linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.5)_41%,rgba(102,102,102,0)_100%)]">
+          <div className="flex flex-col h-full justify-center relative z-20 px-8 gap-3">
+            <h2 className="font-sans text-2.5 drop-shadow-[0_.25rem_.625rem_rgba(0,0,0,0.5)] font-light">ABOUT & APPROACH</h2>
+            <h3 className="text-[2.25rem] flex flex-col leading-[2.5rem]">
+                <span>THE</span>
+                <span>STMPD</span>
+                <span>EXPERIENCE</span>
+            </h3>
+            <p className="text-[.875rem]">
+                STMPD recording studios is Amsterdam&apos;s largest recording
+                studio facility. Designed as the ultimate playground for music and
+                audio post-production.
             </p>
-            </div>
-            <ul className="flex flex-col items-end gap-3 mt-[8.75rem]">
-                <li className="flex items-center gap-2">
-                  <Button>ABOUT</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem]"/>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Button>APPROACH</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem]"/>
-                </li>
-              </ul>
+            <p className="text-[.875rem]">
+            Designed as the ultimate playground for music and audio post-production.
+            </p>
+            <ul className="flex flex-col gap-3 mt-4">
+                <li className="flex gap-3 items-center"><Button className="text-black py-1 px-2.5 font-semibold bg-white">ABOUT</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem] fill-white"/></li>
+                <li className="flex gap-3 items-center"><Button className="text-black py-1 px-2.5 font-semibold bg-white">APPROACH</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem] fill-white"/></li>
+                
+            </ul>
+          </div>
           </div>
         </div>
       </Container>

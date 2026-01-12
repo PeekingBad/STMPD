@@ -61,7 +61,7 @@ const Projects = () => {
             </p>
             <div className="flex items-center gap-3 flex-shrink-0">
               <Button>VIEW ALL WORK</Button>
-              <Icon icon="arrow-right" className="h-[1.5rem] w-[1.5rem]" />
+              <Icon icon="arrow-right" className="h-[1.5rem] w-[1.5rem] fill-white" />
             </div>
           </div>
         </div>

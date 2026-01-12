@@ -44,36 +44,6 @@ const About = () => {
             </ul>
           </div>
         </div>
-        {/* <div className="grid grid-cols-2">
-          <div className="w-full h-full">
-            <Image
-              src="/img/Experience.jpg"
-              alt=""
-              width={625}
-              height={712}
-              className="z-0"
-            ></Image>
-            <h2 className="absolute left-[18.75rem] top-[65%] z-10 text-[6.25rem] leading-[5.9375rem]">
-              THE STMPD <br />
-              <span className="pl-10">EXPERIENCE</span>
-            </h2>
-          </div>
-          <div className="flex flex-col gap-6 justify-center pt-[1.5rem]">
-            <h3 className="font-sans font-medium text-[16px] tracking-[.25rem] opacity-30">
-              ABOUT & APPROACH
-            </h3>
-            <p className="text-2xl">
-              STMPD recording studios is Amsterdam&apos;s largest recording
-              studio facility. Designed as the ultimate playground for music and
-              audio post-production.
-            </p>
-            <ul>
-              <li className="flex gap-3 items-center"><Button>ABOUT</Button><Icon icon="arrow-right"/></li>
-            <li className="flex gap-3 items-center"><Button>APPROACH</Button><Icon icon="arrow-right"/></li>
-              
-            </ul>
-          </div>
-        </div> */}
       </Container>
     </section>
   );
