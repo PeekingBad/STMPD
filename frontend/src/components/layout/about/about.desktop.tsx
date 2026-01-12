@@ -35,10 +35,10 @@ const AboutDesktop = () => {
             </div>
             <ul className="flex flex-col items-end gap-3 mt-[8.75rem]">
                 <li className="flex items-center gap-2">
-                  <Button>ABOUT</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem]"/>
+                  <Button>ABOUT</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem] fill-white"/>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Button>APPROACH</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem]"/>
+                  <Button>APPROACH</Button><Icon icon="arrow-right" className="h-[1rem] w-[1.5rem] fill-white"/>
                 </li>
               </ul>
           </div>

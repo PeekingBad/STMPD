@@ -11,7 +11,7 @@ const HeroDesktop = () => {
       <video className="absolute object-cover h-screen w-full" src="/video/hero_video.mp4" autoPlay loop muted={true} playsInline poster="/img/hero_thumbnail.jpg"></video>
     <Container className="h-screen flex flex-col justify-center relative">
       <div className="flex items-center justify-center">
-        <h1 className="text-white md:text-[7.5rem] uppercase text-center md:max-w-[9.5ch] md:leading-[7.5rem] md:-tracking-[2] drop-shadow-[0_.25rem_.625rem_rgba(0,0,0,0.5)]">
+        <h1 className="text-white text-[7.5rem] uppercase text-center md:max-w-[9.5ch] md:leading-[7.5rem] md:-tracking-[2] drop-shadow-[0_.25rem_.625rem_rgba(0,0,0,0.5)]">
           your creative partner in sound & story.
         </h1>
       </div>

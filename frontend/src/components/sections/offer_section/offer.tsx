@@ -96,7 +96,7 @@ const Offer = () => {
 
               <div className="flex items-center gap-4">
                 <span className={styles.title}>{service.title}</span>
-                {isActive && <Icon icon="arrow-right" className="h-[24px] w-[24px]"/>}
+                {isActive && <Icon icon="arrow-right" className="h-[24px] w-[24px] fill-white"/>}
               </div>
             </div>
           );
