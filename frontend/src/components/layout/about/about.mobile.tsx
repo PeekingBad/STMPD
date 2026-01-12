@@ -1,10 +1,10 @@
 import React from "react";
-import { Container } from "../Container";
+import { Container } from "../../Container";
 import Image from "next/image";
-import Button from "../ui/button.component";
-import Icon from "../ui/icon.component";
+import Button from "../../ui/button.component";
+import Icon from "../../ui/icon.component";
 
-const About = () => {
+const AboutMobile = () => {
   return (
     <section className="">
       <Container className="">
@@ -48,4 +48,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutMobile;

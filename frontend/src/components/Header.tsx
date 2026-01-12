@@ -5,6 +5,7 @@ import Link from "next/link";
 import { StrapiImage } from "./StrapiImage";
 import { gsap } from "gsap";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Container } from "./Container";
 
 interface LinkProps {
   id: number;
@@ -188,7 +189,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
 
   return (
     <header className="absolute top-0 left-0 w-full">
-      <div className="container mx-auto flex items-center justify-between p-8 xl:px-0 relative z-[60]">
+      <Container className="flex items-center justify-between p-8 xl:px-0 relative z-[60]">
         <Link
           href={logoLink.href || "/"}
           className="block"
@@ -225,7 +226,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
             />
           </div>
         </button>
-      </div>
+      </Container>
 
       <div
         ref={menuRef}
