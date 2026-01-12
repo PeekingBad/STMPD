@@ -1,9 +1,9 @@
 'use client';
 
-import { ArrowDown } from 'public/icon';
+import { ArrowDown, ArrowRight } from 'public/icon';
 import React from 'react'
 
-export type IconVariant = 'arrow-down';
+export type IconVariant = 'arrow-down' | 'arrow-right';
 
 type Props = {
   icon: IconVariant;
@@ -19,6 +19,9 @@ const Icon: React.FC<Props> = ({ icon, className, decorative, onClick, buttonCla
   switch (icon) {
     case 'arrow-down':
       IconElement = ArrowDown;
+      break;
+    case 'arrow-right':
+      IconElement = ArrowRight;
       break;
 
     default:

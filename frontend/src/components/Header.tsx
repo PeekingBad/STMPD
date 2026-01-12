@@ -65,6 +65,12 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
       icon: <FaInstagram />,
       name: "Instagram",
     },
+     {
+      id: 4,
+      href: "https://instagram.com",
+      icon: <FaInstagram />,
+      name: "LinkedIN",
+    },
   ];
 
   useLayoutEffect(() => {
@@ -141,7 +147,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.6",
+        "-=0.7",
       )
       .to(
         socialsEls,
@@ -152,7 +158,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.9",
+        "-=0.7",
       );
 
     return () => {
@@ -231,16 +237,16 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           ))}
         </div>
 
-        <div className="relative z-10 h-full flex flex-col md:flex-row md:items-start w-full px-8 pt-28 md:pt-40 md:px-11 md:justify-start md:gap-x-20">
+        <div className="relative z-10 h-full flex flex-col md:flex-row md:items-start text-[85px] w-full leading-[128px] px-8 pt-40 md:pt-56 md:px-11 md:justify-between font-maharlika md:gap-x-20">
           <div
             ref={linksRef}
-            className="flex flex-col space-y-4 md:space-y-4 w-full md:w-auto md:ml-0"
+            className="flex flex-col space-y-2 md:space-y-8 w-full h-full md:w-auto md:ml-0"
           >
             {links.map((link) => (
               <Link
                 key={link.id}
                 href={link.href}
-                className="text-xl sm:text-2xl md:text-4xl font-semibold text-white uppercase"
+                className="text-lg sm:text-xl md:text-[85px] text-white uppercase"
                 target={link.external ? "_blank" : "_self"}
                 onClick={() => setOpen(false)}
               >
@@ -250,7 +256,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
 
             <Link
               href={cta.href}
-              className="mt-4 px-6 py-3 text-lg sm:text-xl md:text-xl font-semibold bg-white text-black w-fit uppercase"
+              className="px-6 py-3 text-base sm:text-lg md:text-xl font-maharlika bg-white text-black w-fit uppercase"
               target={cta.external ? "_blank" : "_self"}
               onClick={() => setOpen(false)}
             >
@@ -260,14 +266,16 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
 
           <div
             ref={socialsRef}
-            className="mt-8 md:mt-0 w-full md:w-auto flex flex-col space-y-4 text-white uppercase text-sm sm:text-xs md:text-base"
+            className="-mt-0 md:mt-0 w-full md:w-auto flex flex-col space-y-1 text-white/40 uppercase text-xs sm:text-sm md:text-base md:h-full md:flex md:flex-col md:justify-end md:pb-12"
           >
-            <span className="font-bold md:text-base">SOCIALS</span>
+            <span className="font-bold md:text-2xl sm:text-lg text-white font-sans">
+              SOCIALS
+            </span>
             {socials.map((social) => (
               <Link
                 key={social.id}
                 href={social.href}
-                className="flex items-center space-x-2 hover:opacity-80 transition md:text-base"
+                className="flex items-center font-sans space-x-2 hover:opacity-80 transition md:text-base"
                 target="_blank"
                 onClick={() => setOpen(false)}
               >
