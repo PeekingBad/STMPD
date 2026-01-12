@@ -10,7 +10,7 @@ const Hero = () => {
       <video className="absolute object-cover h-screen w-full" src="/video/hero_video.mp4" autoPlay loop muted={true} playsInline poster="/img/hero_thumbnail.jpg"></video>
     <Container className="h-screen flex flex-col justify-center relative">
       <div className="flex flex-1 items-center justify-center">
-        <h1 className="text-white text-[120px] uppercase text-center max-w-[9.5ch] leading-[128px] -tracking-[2] drop-shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
+        <h1 className="text-white text-[115px] uppercase text-center max-w-[9.5ch] leading-[120px] -tracking-[2] drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
           your creative partner in sound & story.
         </h1>
       </div>
