@@ -63,7 +63,7 @@ const Offer = () => {
 
   return (
     <section
-      className="min-h-screen bg-black px-20 py-32"
+      className="min-h-screen px-20 py-32"
       onMouseMove={handleMouseMove}
     >
       <Image
