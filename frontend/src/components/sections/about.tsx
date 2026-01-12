@@ -30,7 +30,7 @@ const About = () => {
           </div>
           <div className="relative z-10 flex justify-between mt-[-1.5rem] w-full">
             <h3 className="relative left-[-6.25rem] text-[6.25rem] leading-[6.25rem]">
-              THE STPMD <span className="pl-10">EXPERIENCE</span>
+              THE STMPD<span className="pl-10">EXPERIENCE</span>
             </h3>
             <ul className="flex flex-col gap-4 justify-end items-end">
               <li className="flex gap-3 items-center">
