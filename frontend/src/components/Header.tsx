@@ -56,6 +56,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
   useEffect(() => {
     const savedLocale = Cookies.get("NEXT_LOCALE");
     if (savedLocale && savedLocale !== currentLocale) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCurrentLocale(savedLocale);
     }
   }, [currentLocale]);
