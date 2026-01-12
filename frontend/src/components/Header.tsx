@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import Link from "next/link";
 import { StrapiImage } from "./StrapiImage";
 import { gsap } from "gsap";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import { Container } from "./Container";
 
 interface LinkProps {
@@ -40,12 +42,30 @@ interface HeaderProps {
 export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
   const [open, setOpen] = useState(false);
   const [barsCount, setBarsCount] = useState(18);
+  const [currentLocale, setCurrentLocale] = useState("nl");
 
   const menuRef = useRef<HTMLDivElement>(null);
   const barsRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const savedLocale = Cookies.get("NEXT_LOCALE");
+    if (savedLocale) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setCurrentLocale(savedLocale);
+    }
+  }, []);
+
+  function handleLocaleChange() {
+    const newLocale = currentLocale === "en" ? "nl" : "en";
+    setCurrentLocale(newLocale);
+    Cookies.set("NEXT_LOCALE", newLocale, { expires: 365 });
+    router.refresh();
+  }
 
   const socials: SocialProps[] = [
     {
@@ -66,7 +86,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
       icon: <FaInstagram />,
       name: "Instagram",
     },
-     {
+    {
       id: 4,
       href: "https://instagram.com",
       icon: <FaInstagram />,
@@ -95,7 +115,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
     const bars = gsap.utils.toArray<HTMLElement>(barsRef.current.children);
     const linksEls = gsap.utils.toArray<HTMLElement>(linksRef.current.children);
     const socialsEls = gsap.utils.toArray<HTMLElement>(
-      socialsRef.current.children,
+      socialsRef.current.children
     );
 
     gsap.set(menuRef.current, {
@@ -137,7 +157,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           },
           ease: "power3.inOut",
         },
-        "-=0.5",
+        "-=0.5"
       )
       .to(
         linksEls,
@@ -148,7 +168,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.7",
+        "-=0.7"
       )
       .to(
         socialsEls,
@@ -159,7 +179,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.7",
+        "-=0.7"
       );
 
     return () => {
@@ -203,29 +223,37 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
             className="w-7 h-8"
           />
         </Link>
-
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="w-8 h-8 sm:w-7 sm:h-7 relative flex items-center justify-center"
-          aria-label="Toggle menu"
-        >
-          <div className="w-6 h-6 sm:w-5 sm:h-5 relative">
-            <span
-              className={`absolute w-full h-[2px] transition-all duration-300 ${
-                open
-                  ? "bg-white rotate-45 top-1/2 -translate-y-1/2"
-                  : "bg-white top-[35%]"
-              }`}
-            />
-            <span
-              className={`absolute w-full h-[2px] transition-all duration-300 ${
-                open
-                  ? "bg-white -rotate-45 top-1/2 -translate-y-1/2"
-                  : "bg-white top-[65%]"
-              }`}
-            />
-          </div>
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleLocaleChange}
+            className="w-8 h-8 sm:w-7 sm:h-7 relative flex items-center justify-center text-white"
+            aria-label="Toggle language"
+          >
+            {currentLocale === "nl" ? "NL" : "EN"}
+          </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="w-8 h-8 sm:w-7 sm:h-7 relative flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-6 sm:w-5 sm:h-5 relative">
+              <span
+                className={`absolute w-full h-[2px] transition-all duration-300 ${
+                  open
+                    ? "bg-white rotate-45 top-1/2 -translate-y-1/2"
+                    : "bg-white top-[35%]"
+                }`}
+              />
+              <span
+                className={`absolute w-full h-[2px] transition-all duration-300 ${
+                  open
+                    ? "bg-white -rotate-45 top-1/2 -translate-y-1/2"
+                    : "bg-white top-[65%]"
+                }`}
+              />
+            </div>
+          </button>
+        </div>
       </Container>
 
       <div
