@@ -49,7 +49,11 @@ const config: Config = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      screens: {
+        'fhd': '1920px', //Full HD
+      }
+    },
   },
   plugins: [],
 };

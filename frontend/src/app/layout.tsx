@@ -33,7 +33,7 @@ async function loader() {
   });
 
   const url = new URL(path, baseUrl);
-  url.search = `?${query}`;
+  url.search = query;
 
   return fetchData(url.href);
 }
