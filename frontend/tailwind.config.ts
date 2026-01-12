@@ -15,11 +15,11 @@ const config: Config = {
     extend: {
       colors: {
         trueGray: colors.neutral,
-        primary: "#232323",
-        secondary: "#000000",
-        tertiary: "#000000",
-        background: "#000000",
-        text: "#ffffff",
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        tertiary: "var(--color-tertiary)",
+        background: "var(--color-background)",
+        text: "var(--color-text)",
       },
       fontFamily: {
         maharlika: ["Maharlika Regular", "sans-serif"],
