@@ -33,15 +33,15 @@ export function Footer() {
 
   return (
     <footer
-      className="relative mt-32 overflow-hidden"
+      className="relative overflow-hidden"
       style={{ backgroundColor: "var(--color-footer)" }}
     >
       <Container>
         <div className="py-20">
           <hr className="border-t border-white/35 rounded" />
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 text-gray-400 mt-12 md:mt-20">
+                    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-12 text-gray-400 mt-12 md:mt-20">
                       {/* Column 1: Disclaimer */}
-                      <div>
+                      <div className="max-w-xs">
                         <h2 className="font-maharlika text-4xl md:text-[60px] text-white leading-tight mb-2">
                           YOUR CREATIVE PARTNER IN SOUND & STORY
                         </h2>
@@ -49,9 +49,9 @@ export function Footer() {
                           Please note this is not the contact for STMPD RCRDS or Martin
                           Garrix. <div className="h-2"/>
                           Demos for STMPD RCRDS can be submitted  
-                          <Link
+                          <Link 
                             href="#"
-                            className="underline hover:text-white transition-colors"
+                            className="underline ml-1 hover:text-white transition-colors"
                           >
                             here
                           </Link>
@@ -61,7 +61,7 @@ export function Footer() {
           
                       {/* Column 2: STMPD STUDIOS */}
                       <div>
-                        <h3 className="font-maharlika text-[30px] text-white mb-4">
+                        <h3 className="font-maharlika text-[30px] whitespace-nowrap text-white mb-4">
                           STMPD STUDIOS
                         </h3>
                         <p className="text-base leading-relaxed">
@@ -118,13 +118,12 @@ export function Footer() {
                         </ul>
                       </div>
           
-                      {/* Column 4: NAVIGATION */}
-                      <div>
-                        <h3 className="font-maharlika text-[30px] text-white mb-4">
-                          NAVIGATION
-                        </h3>
-                        <ul className="space-y-2">
-                          <li>
+                                  {/* Column 4: NAVIGATION */}
+                                  <div className="justify-self-end">
+                                    <h3 className="font-maharlika text-[30px] text-white mb-4">
+                                      NAVIGATION
+                                    </h3>
+                                    <ul className="space-y-2">                          <li>
                             <Link
                               href="/"
                               className="text-base hover:text-white transition-colors"
