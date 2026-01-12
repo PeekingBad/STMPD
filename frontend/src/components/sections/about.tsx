@@ -24,8 +24,8 @@ const About = () => {
               </h3>
             </div>
           </div>
-          <div className="flex flex-col gap-4 mt-[15rem]">
-            <div className="flex flex-col">
+          <div className="flex flex-col gap-4 mt-[13.5rem]">
+            <div className="flex flex-col gap-5">
             <h2 className="font-sans text-2 opacity-30">ABOUT & APPROACH</h2>
             <p className="text-2xl">
               STMPD recording studios is Amsterdam&apos;s largest recording
