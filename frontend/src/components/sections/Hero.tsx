@@ -27,7 +27,7 @@ const Hero = () => {
             <Icon icon="arrow-down" />  
           </div>
 
-          <p className="flex flex-col text-right uppercase leading-tight max-w-[340px] font-maharlika">
+          <p className="flex flex-col text-right uppercase leading-tight font-maharlika">
           <span>Amsterdam&apos;s</span>
           <span>Largest</span>
           <span>Recording</span>
