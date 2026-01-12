@@ -12,7 +12,7 @@ const About = () => {
           <div className="relative w-[80%]">
             <Image
               src="/img/Experience.jpg"
-              alt="About Image"
+              alt=""
               width={625}
               height={712}
               className="object-cover"
