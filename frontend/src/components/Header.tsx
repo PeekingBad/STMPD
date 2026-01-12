@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { Container } from "./Container";
 
+
 interface LinkProps {
   id: number;
   href: string;
@@ -54,11 +55,10 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
 
   useEffect(() => {
     const savedLocale = Cookies.get("NEXT_LOCALE");
-    if (savedLocale) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (savedLocale && savedLocale !== currentLocale) {
       setCurrentLocale(savedLocale);
     }
-  }, []);
+  }, [currentLocale]);
 
   function handleLocaleChange() {
     const newLocale = currentLocale === "en" ? "nl" : "en";
@@ -209,7 +209,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
 
   return (
     <header className="absolute top-0 left-0 w-full">
-      <Container className="flex items-center justify-between p-8 xl:px-0 relative z-[60]">
+      <Container className="mx-auto flex items-center justify-between p-8 xl:px-0 relative z-[60]">
         <Link
           href={logoLink.href || "/"}
           className="block"
@@ -223,10 +223,12 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
             className="w-7 h-8"
           />
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center">
           <button
             onClick={handleLocaleChange}
-            className="w-8 h-8 sm:w-7 sm:h-7 relative flex items-center justify-center text-white"
+            className={`w-8 h-8 sm:w-7 sm:h-7 relative items-center justify-center text-white ${
+              open ? "flex" : "hidden"
+            } md:flex`}
             aria-label="Toggle language"
           >
             {currentLocale === "nl" ? "NL" : "EN"}
@@ -266,7 +268,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           ))}
         </div>
 
-        <div className="relative z-10 h-full flex flex-col md:flex-row md:items-start text-[85px] w-full leading-[128px] px-8 pt-40 md:pt-56 md:px-11 md:justify-between font-maharlika md:gap-x-20">
+        <Container className="relative px-8 z-10 h-full flex flex-col md:flex-row md:items-start text-[85px] w-full leading-[128px] pt-40 md:pt-56 md:justify-between font-maharlika md:gap-x-20">
           <div
             ref={linksRef}
             className="flex flex-col space-y-2 md:space-y-8 w-full h-full md:w-auto md:ml-0"
@@ -313,7 +315,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
               </Link>
             ))}
           </div>
-        </div>
+        </Container>
       </div>
     </header>
   );
