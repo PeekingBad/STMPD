@@ -51,8 +51,8 @@ const config: Config = {
   variants: {
     extend: {
       screens: {
-        'fhd': '1920px', //Full HD
-      }
+        fhd: "1920px", //Full HD
+      },
     },
   },
   plugins: [],
