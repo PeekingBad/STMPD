@@ -25,7 +25,9 @@
 
 html,
 body {
-  overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
   color: var(--color-text);
 
