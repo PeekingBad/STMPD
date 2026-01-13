@@ -33,148 +33,149 @@ export function Footer() {
 
   return (
     <footer
-      className="relative mt-32 overflow-hidden"
+      className="relative overflow-hidden"
       style={{ backgroundColor: "var(--color-footer)" }}
     >
       <Container>
         <div className="py-20">
           <hr className="border-t border-white/35 rounded" />
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 text-gray-400 mt-12 md:mt-20">
-                      {/* Column 1: Disclaimer */}
-                      <div>
-                        <h2 className="font-maharlika text-4xl md:text-[60px] text-white leading-tight mb-2">
-                          YOUR CREATIVE PARTNER IN SOUND & STORY
-                        </h2>
-                        <p className="text-base leading-relaxed">
-                          Please note this is not the contact for STMPD RCRDS or Martin
-                          Garrix. <div className="h-2"/>
-                          Demos for STMPD RCRDS can be submitted  
-                          <Link
-                            href="#"
-                            className="underline hover:text-white transition-colors"
-                          >
-                            here
-                          </Link>
-                          .
-                        </p>
-                      </div>
-          
-                      {/* Column 2: STMPD STUDIOS */}
-                      <div>
-                        <h3 className="font-maharlika text-[30px] text-white mb-4">
-                          STMPD STUDIOS
-                        </h3>
-                        <p className="text-base leading-relaxed">
-                          H.J.E. Wenckebachweg 68
-                          <br />
-                          1114 AD Amsterdam
-                        </p>
-                        <a
-                          href="tel:+31206686161"
-                          className="text-base mt-2 inline-block hover:text-white transition-colors"
-                        >
-                          +31(0)20 668 61 61
-                        </a>
-                      </div>
-          
-                      {/* Column 3: DOWNLOADS */}
-                      <div>
-                        <h3 className="font-maharlika text-[30px] text-white mb-4">
-                          DOWNLOADS
-                        </h3>
-                        <ul className="space-y-2">
-                          <li>
-                            <a
-                              href="#"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Factsheet
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Legal
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Getting There
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Press
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-          
-                      {/* Column 4: NAVIGATION */}
-                      <div>
-                        <h3 className="font-maharlika text-[30px] text-white mb-4">
-                          NAVIGATION
-                        </h3>
-                        <ul className="space-y-2">
-                          <li>
-                            <Link
-                              href="/"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Home
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/work"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Work
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/studio"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Studio
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/about"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              About
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/approach"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Approach
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/contact"
-                              className="text-base hover:text-white transition-colors"
-                            >
-                              Contact
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-12 text-gray-400 md:mt-20">
+            {/* Column 1: Disclaimer */}
+            <div className="max-w-xs flex flex-col gap-2">
+              <h2 className="font-maharlika text-4xl md:text-[60px] text-white leading-tight">
+                YOUR CREATIVE PARTNER IN SOUND & STORY
+              </h2>
+              <p className="text-base leading-relaxed">
+                Please note this is not the contact for STMPD RCRDS or Martin
+               
+              </p>
+              <p className="text-base leading-relaxed "> Garrix. Demos for STMPD RCRDS can be submitted
+                <Link
+                  href="#"
+                  className="underline ml-1 hover:text-white transition-colors"
+                >
+                  here
+                </Link>
+                .</p>
+            </div>
+
+            {/* Column 2: STMPD STUDIOS */}
+            <div>
+              <h3 className="font-maharlika text-[30px] whitespace-nowrap text-white mb-4">
+                STMPD STUDIOS
+              </h3>
+              <p className="text-base leading-relaxed">
+                H.J.E. Wenckebachweg 68
+                <br />
+                1114 AD Amsterdam
+              </p>
+              <a
+                href="tel:+31206686161"
+                className="text-base mt-2 inline-block hover:text-white transition-colors"
+              >
+                +31(0)20 668 61 61
+              </a>
+            </div>
+
+            {/* Column 3: DOWNLOADS */}
+            <div>
+              <h3 className="font-maharlika text-[30px] text-white mb-4">
+                DOWNLOADS
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Factsheet
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Legal
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Getting There
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Press
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: NAVIGATION */}
+            <div className="justify-self-end">
+              <h3 className="font-maharlika text-[30px] text-white mb-4">
+                NAVIGATION
+              </h3>
+              <ul className="space-y-2">
+                {" "}
+                <li>
+                  <Link
+                    href="/"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/work"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Work
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/studio"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Studio
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/approach"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Approach
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-base hover:text-white transition-colors"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </Container>
 

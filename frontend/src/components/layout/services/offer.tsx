@@ -14,10 +14,25 @@ type Service = {
 };
 
 const services: Service[] = [
-  { id: 1, number: "01", title: "Music production", image: "/img/stmpd-img-1.jpg" },
-  { id: 2, number: "02", title: "Film & commercials", image: "/img/stmpd-img-2.jpg" },
+  {
+    id: 1,
+    number: "01",
+    title: "Music production",
+    image: "/img/stmpd-img-1.jpg",
+  },
+  {
+    id: 2,
+    number: "02",
+    title: "Film & commercials",
+    image: "/img/stmpd-img-2.jpg",
+  },
   { id: 3, number: "03", title: "Dolby Atmos", image: "/img/stmpd-img-3.jpg" },
-  { id: 4, number: "04", title: "In-house production", image: "/img/stmpd-img-4.jpg" },
+  {
+    id: 4,
+    number: "04",
+    title: "In-house production",
+    image: "/img/stmpd-img-4.jpg",
+  },
   { id: 5, number: "05", title: "Events", image: "/img/stmpd.jpg" },
 ];
 
@@ -53,7 +68,7 @@ const Offer = () => {
     gsap.fromTo(
       cursorImageRef.current,
       { scale: 0.9 },
-      { scale: 1, duration: 0.4, ease: "power3.out" }
+      { scale: 1, duration: 0.4, ease: "power3.out" },
     );
   };
 
@@ -62,10 +77,7 @@ const Offer = () => {
   };
 
   return (
-    <section
-      className="px-20 py-32"
-      onMouseMove={handleMouseMove}
-    >
+    <section className="px-20 py-32" onMouseMove={handleMouseMove}>
       <Image
         ref={cursorImageRef}
         src={activeIndex !== null ? services[activeIndex].image : ""}
