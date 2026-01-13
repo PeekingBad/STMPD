@@ -42,14 +42,13 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-12 text-gray-400 md:mt-20">
             {/* Column 1: Disclaimer */}
             <div className="max-w-xs flex flex-col gap-2">
-              <h2 className="font-maharlika text-4xl md:text-[60px] text-white leading-tight">
+              <h2 className="font-maharlika text-4xl md:text-[64px] text-white leading-tight">
                 YOUR CREATIVE PARTNER IN SOUND & STORY
               </h2>
               <p className="text-base leading-relaxed">
                 Please note this is not the contact for STMPD RCRDS or Martin
-               
               </p>
-              <p className="text-base leading-relaxed "> Garrix. Demos for STMPD RCRDS can be submitted
+              <p className="text-base leading-relaxed"> Garrix. Demos for STMPD RCRDS can be submitted
                 <Link
                   href="#"
                   className="underline ml-1 hover:text-white transition-colors"
@@ -78,7 +77,7 @@ export function Footer() {
             </div>
 
             {/* Column 3: DOWNLOADS */}
-            <div>
+            <div className="justify-self-end">
               <h3 className="font-maharlika text-[30px] text-white mb-4">
                 DOWNLOADS
               </h3>
@@ -124,7 +123,6 @@ export function Footer() {
                 NAVIGATION
               </h3>
               <ul className="space-y-2">
-                {" "}
                 <li>
                   <Link
                     href="/"
