@@ -15,9 +15,9 @@ const nextConfig = {
   // Turbopack configuratie voor SVG's
   turbopack: {
     rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
       },
     },
   },
