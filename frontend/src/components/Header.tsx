@@ -207,7 +207,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
   }, [open]);
 
   return (
-    <header className="absolute top-0 left-0 w-full">
+    <header className="fixed top-0 left-0 w-full z-50">
       <Container className="mx-auto flex items-center justify-between p-8 xl:px-0 relative z-[60]">
         <Link
           href={logoLink.href || "/"}
