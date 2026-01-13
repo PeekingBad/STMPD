@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { Container } from "./Container";
 
-
 interface LinkProps {
   id: number;
   href: string;
@@ -115,7 +114,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
     const bars = gsap.utils.toArray<HTMLElement>(barsRef.current.children);
     const linksEls = gsap.utils.toArray<HTMLElement>(linksRef.current.children);
     const socialsEls = gsap.utils.toArray<HTMLElement>(
-      socialsRef.current.children
+      socialsRef.current.children,
     );
 
     gsap.set(menuRef.current, {
@@ -157,7 +156,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           },
           ease: "power3.inOut",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .to(
         linksEls,
@@ -168,7 +167,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.7"
+        "-=0.7",
       )
       .to(
         socialsEls,
@@ -179,7 +178,7 @@ export function Header({ logoLink, links, cta }: Readonly<HeaderProps>) {
           stagger: 0.08,
           ease: "power3.out",
         },
-        "-=0.7"
+        "-=0.7",
       );
 
     return () => {

@@ -1,16 +1,19 @@
-import React from 'react'
+import React from "react";
 
 type ButtonProps = {
-    label?: string;
-    children?: React.ReactNode;
-    onClick?: () => void;
-    className?: string;
-    }
+  label?: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+};
 
-const Button: React.FC<ButtonProps> = ({label, children, onClick, className}) => {
-  return (
-    <button>{children}</button>
-  )
-}
+const Button: React.FC<ButtonProps> = ({
+  label,
+  children,
+  onClick,
+  className,
+}) => {
+  return <button>{children}</button>;
+};
 
-export default Button
+export default Button;
