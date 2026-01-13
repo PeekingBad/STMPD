@@ -4,7 +4,7 @@ import Icon from "@/components/ui/icon.component";
 import Image from "next/image";
 import React from "react";
 
-const Projects = () => {
+const ProjectsMobile = () => {
   return (
     <section className="bg-black">
       <Container className="relative flex flex-col py-[7.5rem] gap-9 h-full justify-center">
@@ -78,4 +78,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsMobile;
