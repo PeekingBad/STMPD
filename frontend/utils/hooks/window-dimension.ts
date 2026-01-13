@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 type UseWindowDimensionsType = {
   width: number;
@@ -29,30 +29,31 @@ const getWindowDimensions = (window: Window): UseWindowDimensionsType => {
     height,
     isMobile,
     isTablet,
-    isBigScreen
+    isBigScreen,
   };
 };
 
 const useWindowDimensions = () => {
-  const [windowDimensions, setWindowDimensions] = useState<UseWindowDimensionsType>({
-    width: 0,
-    height: 0,
-    isMobile: false,
-    isTablet: false,
-    isBigScreen: false
-  });
+  const [windowDimensions, setWindowDimensions] =
+    useState<UseWindowDimensionsType>({
+      width: 0,
+      height: 0,
+      isMobile: false,
+      isTablet: false,
+      isBigScreen: false,
+    });
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-  
+    if (typeof window === "undefined") return;
+
     function handleResize() {
       setWindowDimensions(getWindowDimensions(window));
     }
-  
+
     handleResize();
-  
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return windowDimensions;

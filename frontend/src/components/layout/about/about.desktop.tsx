@@ -26,12 +26,12 @@ const AboutDesktop = () => {
           </div>
           <div className="flex flex-col gap-4 mt-[13.5rem]">
             <div className="flex flex-col gap-5">
-            <h2 className="font-sans text-2 opacity-30">ABOUT & APPROACH</h2>
-            <p className="text-2xl">
-              STMPD recording studios is Amsterdam&apos;s largest recording
-              studio facility. Designed as the ultimate playground for music and
-              audio post-production.
-            </p>
+              <h2 className="font-sans text-2 opacity-30">ABOUT & APPROACH</h2>
+              <p className="text-2xl">
+                STMPD recording studios is Amsterdam&apos;s largest recording
+                studio facility. Designed as the ultimate playground for music
+                and audio post-production.
+              </p>
             </div>
             <ul className="flex flex-col items-end gap-3 mt-[8.75rem]">
                 <li className="flex items-center gap-2">

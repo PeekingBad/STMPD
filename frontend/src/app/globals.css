@@ -19,13 +19,15 @@
     --color-tertiary: #000000;
     --color-background: #222222;
     --color-text: #ffffff;
-    --color-footer: #1E1E1E;
+    --color-footer: #1e1e1e;
   }
 }
 
 html,
 body {
-  overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
   color: var(--color-text);
 
@@ -92,7 +94,7 @@ body {
 }
 
 .animated-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
