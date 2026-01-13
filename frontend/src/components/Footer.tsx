@@ -46,14 +46,14 @@ export function Footer() {
                 YOUR CREATIVE PARTNER IN SOUND & STORY
               </h2>
               <p className="text-base leading-relaxed">
-                Please note this is not the contact for STMPD RCRDS or Martin
+                Please note this is not the contact <br></br> for STMPD RCRDS or Martin Garrix.
               </p>
-              <p className="text-base leading-relaxed"> Garrix. Demos for STMPD RCRDS can be submitted
+              <p className="text-base leading-relaxed"> 
                 <Link
                   href="#"
-                  className="underline ml-1 hover:text-white transition-colors"
+                  className="underline hover:text-white transition-colors"
                 >
-                  here
+                 Demos for STMPD RCRDS <br></br> can be submitted here
                 </Link>
                 .</p>
             </div>
@@ -203,7 +203,7 @@ export function Footer() {
         <Container className="relative z-10 flex items-end justify-between">
           {/* Left Section - Copyright */}
           <div className="text-sm text-gray-400">
-            <p>© 2025 stmpd studios</p>
+            <p>© 2025 STMPD studios</p>
             <p className="leading-tight">All rights reserved</p>
           </div>
 
