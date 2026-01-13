@@ -78,7 +78,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={poppins.className}>
+      <body className={`${poppins.className}`}>
         <SmoothScroll />
         <Navbar />
         <main className="bg-background">{children}</main>
