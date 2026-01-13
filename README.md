@@ -12,8 +12,6 @@ This is a starter template for building a website with a decoupled frontend and 
   - Built with [Next.js](https://nextjs.org/): A React framework for production.
   - Styled with [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework.
   - Written in [TypeScript](https://www.typescriptlang.org/): For static type checking.
-  - Includes a dark mode feature using `next-themes`.
-  - UI components from `@headlessui/react` and `@heroicons/react`.
 
 - **Backend (Separate Strapi Project):**
   - [Strapi](https://strapi.io/): A leading open-source headless CMS.
