@@ -202,13 +202,13 @@ export function Footer() {
 
         <Container className="relative z-10 flex items-end justify-between">
           {/* Left Section - Copyright */}
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-[#6F6F6F]">
             <p>© 2025 STMPD studios</p>
             <p className="leading-tight">All rights reserved</p>
           </div>
 
           {/* Right Section - Credit */}
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-[#6F6F6F]">
             <p>design and realisation by Jambased</p>
           </div>
         </Container>
